@@ -3,7 +3,8 @@ import {
     MapPin, Star, Clock, Users, CheckCircle, ArrowRight,
     Sparkles, Calendar, ShieldCheck, Gem, ChevronRight,
     Crown, Phone, Globe, LayoutList, Award, Heart,
-    Navigation, Shield, Sun, Music, Compass, Briefcase, User
+    Navigation, Shield, Sun, Music, Compass, Briefcase, User,
+    Anchor, Waves, Binoculars
 } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 import { useState, useEffect } from 'react'
@@ -206,7 +207,7 @@ function LuxuryGuidedVacations() {
                     <div className="luxguide-narrative-layout">
                         {/* Visual Side: Staggered Cinematic Panels */}
                         <div className="luxguide-narrative-visuals">
-                            <div className="luxguide-narrative-label animate-on-scroll">EST. 1984</div>
+                            <div className="luxguide-narrative-label animate-on-scroll"></div>
                             <div className="luxguide-narrative-panel main animate-on-scroll">
                                 <div className="luxguide-placeholder-visual">
                                     <p>Cinematic: The Ancient Spirit of Ireland</p>
@@ -285,18 +286,18 @@ function LuxuryGuidedVacations() {
                                 <p className="luxguide-values-title">Our travelers value:</p>
                                 <div className="luxguide-values-grid-new">
                                     {[
-                                        'Concierge level planning',
-                                        'Strategic itinerary guidance',
-                                        'Global luxury travel expertise',
-                                        'Trusted supplier relationships',
-                                        'Advocacy before and during travel',
-                                        'Access to premium experiences',
-                                        'Long term travel partnership support',
-                                        'Luxury cruise, safari, expedition, and Europe expertise'
-                                    ].map((label, i) => (
+                                        { label: 'Concierge level planning', icon: <Sparkles size={16} /> },
+                                        { label: 'Strategic itinerary guidance', icon: <Navigation size={16} /> },
+                                        { label: 'Global luxury travel expertise', icon: <Globe size={16} /> },
+                                        { label: 'Trusted supplier relationships', icon: <Users size={16} /> },
+                                        { label: 'Advocacy before and during travel', icon: <ShieldCheck size={16} /> },
+                                        { label: 'Access to premium experiences', icon: <Gem size={16} /> },
+                                        { label: 'Long term travel partnership support', icon: <Heart size={16} /> },
+                                        { label: 'Luxury cruise, safari, expedition, and Europe expertise', icon: <Crown size={16} /> }
+                                    ].map((item, i) => (
                                         <div key={i} className="luxguide-value-item-new animate-on-scroll" style={{ animationDelay: `${i * 0.1}s` }}>
-                                            <CheckCircle size={16} className="luxguide-value-icon" />
-                                            <span>{label}</span>
+                                            <div className="luxguide-value-icon">{item.icon}</div>
+                                            <span>{item.label}</span>
                                         </div>
                                     ))}
                                 </div>
@@ -339,26 +340,26 @@ function LuxuryGuidedVacations() {
                     <div className="luxguide-authority-layout">
                         <div className="luxguide-authority-ledger">
                             {[
-                                'Over 40 years in the travel industry',
-                                '121+ countries traveled',
-                                'International luxury travel expertise',
-                                'Travel Weekly Magellan Award recognition',
-                                'Travel Leaders Network recognition',
-                                'Global industry speaking engagements',
-                                'Luxury cruise expertise',
-                                'River cruise expertise',
-                                'Expedition cruise expertise',
-                                'Safari expertise',
-                                'Hosted departures and escorted journeys',
-                                'Advisory board leadership within the travel industry',
-                                'Concierge level luxury planning',
-                                'Strong relationships across the global luxury travel industry'
+                                { text: 'Over 40 years in the travel industry', icon: <Clock size={16} /> },
+                                { text: '121+ countries traveled', icon: <Globe size={16} /> },
+                                { text: 'International luxury travel expertise', icon: <Gem size={16} /> },
+                                { text: 'Travel Weekly Magellan Award recognition', icon: <Award size={16} /> },
+                                { text: 'Travel Leaders Network recognition', icon: <Users size={16} /> },
+                                { text: 'Global industry speaking engagements', icon: <User size={16} /> },
+                                { text: 'Luxury cruise expertise', icon: <Anchor size={16} /> },
+                                { text: 'River cruise expertise', icon: <Waves size={16} /> },
+                                { text: 'Expedition cruise expertise', icon: <Compass size={16} /> },
+                                { text: 'Safari expertise', icon: <Binoculars size={16} /> },
+                                { text: 'Hosted departures and escorted journeys', icon: <MapPin size={16} /> },
+                                { text: 'Advisory board leadership within the travel industry', icon: <Briefcase size={16} /> },
+                                { text: 'Concierge level luxury planning', icon: <Sparkles size={16} /> },
+                                { text: 'Strong relationships across the global luxury travel industry', icon: <Heart size={16} /> }
                             ].map((item, i) => (
                                 <div key={i} className="luxguide-authority-item animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
                                     <div className="luxguide-authority-num">{(i + 1).toString().padStart(2, '0')}</div>
                                     <div className="luxguide-authority-text">
-                                        <Award size={16} className="luxguide-authority-icon" />
-                                        <span>{item}</span>
+                                        <span className="luxguide-authority-icon">{item.icon}</span>
+                                        <span>{item.text}</span>
                                     </div>
                                 </div>
                             ))}
@@ -544,20 +545,20 @@ function LuxuryGuidedVacations() {
 
                     <div className="luxguide-cie-pillars-grid">
                         {[
-                            'Simplicity',
-                            'Comfort',
-                            'Cultural immersion',
-                            'Strong storytelling',
-                            'Local guides',
-                            'Well planned pacing',
-                            'Seamless logistics',
-                            'Emotional connection to the destination'
-                        ].map((label, i) => (
+                            { label: 'Simplicity', icon: <LayoutList size={18} /> },
+                            { label: 'Comfort', icon: <Heart size={18} /> },
+                            { label: 'Cultural immersion', icon: <Music size={18} /> },
+                            { label: 'Strong storytelling', icon: <Sun size={18} /> },
+                            { label: 'Local guides', icon: <User size={18} /> },
+                            { label: 'Well planned pacing', icon: <Clock size={18} /> },
+                            { label: 'Seamless logistics', icon: <Navigation size={18} /> },
+                            { label: 'Emotional connection to the destination', icon: <Star size={18} /> }
+                        ].map((item, i) => (
                             <div key={i} className="luxguide-cie-pillar animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
                                 <div className="luxguide-pillar-icon-wrap">
-                                    <CheckCircle size={18} />
+                                    {item.icon}
                                 </div>
-                                <span>{label}</span>
+                                <span>{item.label}</span>
                             </div>
                         ))}
                     </div>
@@ -577,12 +578,14 @@ function LuxuryGuidedVacations() {
                             </div>
                         </div>
                         <div className="luxguide-comparison-visual">
-                            <div className="luxguide-map-placeholder">
-                                <div className="luxguide-placeholder-overlay">
+                            <div className="luxguide-map-container">
+                                <img 
+                                    src="" 
+                                    alt="Ireland Itinerary Map Placeholder" 
+                                    className="luxguide-map-img" 
+                                />
+                                <div className="luxguide-map-overlay">
                                     <p>Interactive Map Placeholder: The Grand Tour Route</p>
-                                </div>
-                                <div className="luxguide-map-dots">
-                                    {[...Array(5)].map((_, i) => <div key={i} className={`luxguide-map-dot dot-${i + 1}`}></div>)}
                                 </div>
                             </div>
                         </div>
@@ -640,10 +643,7 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-destinations-options-section">
                 <div className="luxguide-inner">
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                        <span className="luxguide-eyebrow" style={{ color: 'var(--lg-navy)', justifyContent: 'center' }}>
-                            <MapPin size={14} />
-                            Destinations
-                        </span>
+
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>Best Destinations for CIE Tours</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </div>
@@ -769,10 +769,7 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-comparison-side-section">
                 <div className="luxguide-inner">
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                        <span className="luxguide-eyebrow" style={{ color: 'var(--lg-navy)', justifyContent: 'center' }}>
-                            <CheckCircle size={14} />
-                            Side by Side
-                        </span>
+
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>CIE Tours vs Independent Travel in Ireland</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </div>
@@ -812,10 +809,7 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-advisor-value-matters-section">
                 <div className="luxguide-inner">
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                        <span className="luxguide-eyebrow" style={{ color: 'var(--lg-navy)', justifyContent: 'center' }}>
-                            <Award size={14} />
-                            Advisor Value
-                        </span>
+
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>Why Booking Through a Luxury Travel Advisor Still Matters</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
                         <p className="luxguide-p" style={{ maxWidth: '700px', margin: '0 auto 16px', textAlign: 'center' }}>
@@ -879,10 +873,7 @@ function LuxuryGuidedVacations() {
                 <div className="luxguide-bg-pattern"></div>
                 <div className="luxguide-inner luxguide-relative">
                     <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-                        <span className="luxguide-eyebrow" style={{ justifyContent: 'center' }}>
-                            <Shield size={14} />
-                            Expert Guidance
-                        </span>
+
                         <h2 className="luxguide-h2-white" style={{ textAlign: 'center' }}>Common Mistakes Travelers Make Planning Ireland</h2>
                         <div className="luxguide-bar-white luxguide-bar-center"></div>
                         <p className="luxguide-p-white" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
