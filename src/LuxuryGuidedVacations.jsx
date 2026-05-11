@@ -34,23 +34,6 @@ function LuxuryGuidedVacations() {
     const heroImages = [hero1, hero2, hero3]
 
     useEffect(() => {
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        animatedElements.forEach(el => observer.observe(el));
-
         // Hero Interval
         const timer = setInterval(() => {
             setCurrentHero((prev) => (prev + 1) % heroImages.length)
@@ -58,7 +41,6 @@ function LuxuryGuidedVacations() {
 
         return () => {
             clearInterval(timer);
-            animatedElements.forEach(el => observer.unobserve(el));
         };
     }, [heroImages.length])
 
@@ -466,12 +448,12 @@ function LuxuryGuidedVacations() {
                             <div className="luxguide-visual-stack">
                                 <div className="luxguide-main-visual-placeholder">
                                     <div className="luxguide-placeholder-overlay">
-                                        <p>Cinematic Landscape Placeholder: The Cliffs of Moher at Dusk</p>
+                                        {/* <p>Cinematic Landscape Placeholder: The Cliffs of Moher at Dusk</p> */}
                                     </div>
                                 </div>
                                 <div className="luxguide-detail-visual-placeholder">
                                     <div className="luxguide-placeholder-overlay">
-                                        <p>Detail Placeholder: Irish Village Pub Atmosphere</p>
+                                        {/* <p>Detail Placeholder: Irish Village Pub Atmosphere</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -909,7 +891,7 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-faq-authority-section">
                 <div className="luxguide-faq-inner-new">
                     <div style={{ textAlign: 'center' }}>
-                        <h2 className="luxguide-h2">Frequently Asked Questions About CIE Tours &amp; Ireland Vacations</h2>
+                        <h2 className="luxguide-h2-faq">Frequently Asked Questions About CIE Tours &amp; Ireland Vacations</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </div>
 

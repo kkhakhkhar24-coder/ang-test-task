@@ -8,17 +8,14 @@ body {
 }
 
 .animate-on-scroll {
-  opacity: 0 !important;
-  transform: translateY(40px) !important;
-  transition:
-    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  will-change: transform, opacity;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
 
 .animate-on-scroll.visible {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
 
 /* ============================================================
@@ -120,7 +117,7 @@ p,
 .luxguide-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px
+  padding: 0 20px;
 }
 
 .luxguide-p {
@@ -589,7 +586,7 @@ p,
 }
 
 .luxguide-placeholder-visual p {
-  font-family: "Playfair Display", serif;
+  font-family: "Montserrat",sans-serif;
   font-style: italic;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
@@ -905,8 +902,8 @@ p,
 }
 
 .animate-on-scroll {
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ============================================================
@@ -1218,7 +1215,7 @@ p,
 
 .luxguide-signature-quote p {
   font-size: 28px;
-  font-family: "Playfair Display", serif;
+  font-family: "Montserrat", sans-serif;
   font-style: italic;
   color: var(--lg-navy) !important;
   line-height: 1.3;
@@ -1272,7 +1269,7 @@ p,
    IRELAND IMMERSION SECTION (PREMIUM REFINEMENT)
    ============================================================ */
 .luxguide-ireland-immersion-section {
-  padding: 100px 0;
+  padding: 60px 20px;
   background: radial-gradient(circle at 70% 30%, #1c2f4a 0%, #0f1c2e 100%);
   position: relative;
   overflow: hidden;
@@ -1348,7 +1345,7 @@ p,
 
 .luxguide-placeholder-overlay p {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color:var(--lg-bg-dark2);
   font-family: var(--font-display);
   font-style: italic;
   margin: 0;
@@ -1427,7 +1424,7 @@ p,
 }
 
 .luxguide-h2-white {
-  font-size: 52px !important;
+  font-size: 48px !important;
   margin-bottom: 40px;
   line-height: 1.1 !important;
 }
@@ -1757,6 +1754,10 @@ p,
 /* ============================================================
    DESTINATIONS — CARD GRID
    ============================================================ */
+.luxguide-destinations-options-section {
+  padding: 60px 20px;
+}
+
 .luxguide-options-grid-premium {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1986,7 +1987,7 @@ p,
 }
 
 .luxguide-alignment-visual-placeholder {
-  width: 100%;
+  width: 90%;
   aspect-ratio: 16 / 9;
   background: var(--lg-bg-soft);
   border-radius: 20px;
@@ -1998,11 +1999,16 @@ p,
   border: 1px solid rgba(39, 68, 114, 0.08);
   position: relative;
   overflow: hidden;
+  
 }
 
 /* ============================================================
    COMPARISON TABLE
    ============================================================ */
+.luxguide-comparison-side-section {
+  padding: 60px 20px;
+}
+
 .luxguide-table-wrap {
   overflow-x: auto;
   border-radius: 12px;
@@ -2119,6 +2125,10 @@ p,
 /* ============================================================
    ADVISOR VALUE LAYOUT
    ============================================================ */
+.luxguide-advisor-value-matters-section {
+  padding: 60px 20px;
+}
+
 .luxguide-advisor-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2221,7 +2231,7 @@ p,
    COMMON MISTAKES GRID (DARK)
    ============================================================ */
 .luxguide-common-mistakes-planning-section {
-  padding: 100px 0;
+  padding: 60px 20px;
   background: var(--lg-bg-dark);
   position: relative;
   overflow: hidden;
@@ -2469,7 +2479,7 @@ p,
   .luxguide-trust-premium,
   .luxguide-whatis-premium,
   .luxguide-faq-authority-section {
-    padding: 50px 15px;
+    padding: 60px 20px;
   }
 
   .luxguide-h1 {
@@ -2626,7 +2636,7 @@ p,
   }
 
   .luxguide-section {
-    padding: 80px 20px;
+    padding: 60px 20px;
   }
 
   .luxguide-narrative-layout,
@@ -2722,9 +2732,17 @@ p,
     font-size: 26px !important;
   }
 
+   .luxguide-faq-inner-new h2 {
+    font-size: 24px !important;
+  }
+
   .luxguide-h2,
   .luxguide-h2-white,
   .luxguide-h2-narrative {
+    font-size: 24px !important;
+  }
+
+  .luxguide-h2-faq{
     font-size: 24px !important;
   }
 
@@ -2735,7 +2753,7 @@ p,
   }
 
   .luxguide-section {
-    padding: 60px 16px;
+    padding: 60px 20px;
   }
 
   .luxguide-authority-header {
@@ -2795,6 +2813,13 @@ p,
 
   .luxguide-main-visual-placeholder {
     aspect-ratio: 1/1;
+    width: 70%;
+  }
+
+  .luxguide-placeholder-overlay {
+    width: 70%;
+    bottom: -420px;
+    left: 20px;
   }
 
   .luxguide-detail-visual-placeholder {
@@ -2811,6 +2836,7 @@ p,
     top: -30px;
     width: max-content;
   }
+
 
   .luxguide-h2-white {
     font-size: 32px !important;
@@ -2853,6 +2879,10 @@ p,
   .luxguide-alignment-visual-placeholder {
     aspect-ratio: 1/1;
     margin-top: 40px;
+    width: 80%;
+    margin-left: -12px;
+    margin-top: 20px;
+    
   }
 
   .luxguide-persona-card {
@@ -2915,7 +2945,10 @@ p,
   }
 
   .luxguide-evolution-item {
-    padding: 16px;
+    padding: 10px;
     font-size: 13px;
+    gap: 16px;
+    align-items: center;
+    margin-left: -2px;
   }
 }
