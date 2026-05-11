@@ -1,4 +1,5 @@
 import './LuxuryGuidedVacations.css'
+import { motion } from 'framer-motion'
 import {
     MapPin, Star, Clock, Users, CheckCircle, ArrowRight,
     Sparkles, Calendar, ShieldCheck, Gem, ChevronRight,
@@ -28,6 +29,44 @@ const Navbar = () => (
         </div>
     </nav>
 )
+
+const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+        opacity: 1, 
+        y: 0, 
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    }
+}
+
+const fadeInLeft = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+        opacity: 1, 
+        x: 0, 
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    }
+}
+
+const fadeInRight = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { 
+        opacity: 1, 
+        x: 0, 
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    }
+}
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
+}
 
 function LuxuryGuidedVacations() {
     const [currentHero, setCurrentHero] = useState(0)
@@ -186,68 +225,78 @@ function LuxuryGuidedVacations() {
             {/* ── NARRATIVE LEDGER SECTION (ASYMMETRIC STORYTELLING) ───────────────── */}
             <section className="luxguide-narrative-ledger-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-narrative-layout">
+                    <motion.div 
+                        className="luxguide-narrative-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
                         {/* Visual Side: Staggered Cinematic Panels */}
-                        <div className="luxguide-narrative-visuals">
-                            <div className="luxguide-narrative-label animate-on-scroll"></div>
-                            <div className="luxguide-narrative-panel main animate-on-scroll">
+                        <motion.div className="luxguide-narrative-visuals" variants={fadeInLeft}>
+                            <div className="luxguide-narrative-label"></div>
+                            <div className="luxguide-narrative-panel main">
                                 <div className="luxguide-placeholder-visual">
                                     <p>Cinematic: The Ancient Spirit of Ireland</p>
                                 </div>
                             </div>
-                            <div className="luxguide-narrative-panel sub animate-on-scroll">
+                            <div className="luxguide-narrative-panel sub">
                                 <div className="luxguide-placeholder-visual">
                                     <p>Cinematic: Highland Majesty</p>
                                 </div>
                             </div>
+                        </motion.div>
 
-                        </div>
-
-                        {/* Content Side: High-End Typography */}
-                        <div className="luxguide-narrative-content">
-                            <span className="luxguide-badge-navy animate-on-scroll">THE JOURNEY OF A LIFETIME</span>
-                            <h2 className="luxguide-h2-narrative animate-on-scroll">
+                        <motion.div className="luxguide-narrative-content" variants={fadeInRight}>
+                            <span className="luxguide-badge-navy">THE JOURNEY OF A LIFETIME</span>
+                            <h2 className="luxguide-h2-narrative">
                                 Some destinations deserve<br />
                                 <span>more than a reservation.</span>
                             </h2>
-                            <div className="luxguide-narrative-bar animate-on-scroll"></div>
+                            <div className="luxguide-narrative-bar"></div>
 
                             <div className="luxguide-narrative-text-blocks">
-                                <p className="luxguide-p-lead animate-on-scroll">
+                                <p className="luxguide-p-lead">
                                     They deserve context, storytelling, thoughtful pacing, and the kind of planning that allows travelers to truly experience a place instead of simply moving through it.
                                 </p>
 
-                                <div className="luxguide-destination-row animate-on-scroll">
+                                <div className="luxguide-destination-row">
                                     <div className="luxguide-row-line"></div>
                                     <p className="luxguide-p">Ireland is one of those destinations.</p>
                                 </div>
-                                <div className="luxguide-destination-row animate-on-scroll">
+                                <div className="luxguide-destination-row">
                                     <div className="luxguide-row-line"></div>
                                     <p className="luxguide-p">Scotland is one of those destinations.</p>
                                 </div>
 
-                                <p className="luxguide-p animate-on-scroll">
+                                <p className="luxguide-p">
                                     The rolling countryside, dramatic coastlines, centuries old castles, village pubs, historic cities, and layered cultural history deserve to be experienced with expertise and intention.
                                 </p>
 
-                                <p className="luxguide-p animate-on-scroll">
+                                <p className="luxguide-p">
                                     At Trips &amp; Ships Luxury Travel, we help travelers experience Ireland, Scotland, and Europe through expertly planned luxury guided vacations with CIE Tours, one of the most respected escorted touring companies specializing in Ireland and the British Isles.
                                 </p>
 
-                                <p className="luxguide-p animate-on-scroll">
+                                <p className="luxguide-p">
                                     Whether you are traveling for heritage, celebration, retirement, family connection, or simply the desire to finally experience the landscapes you have dreamed about for years, our team helps elevate escorted touring into a far more strategic and meaningful luxury travel experience.
                                 </p>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── TRUST & AUTHORITY SECTION ────────────────────────────────────────────── */}
             <section className="luxguide-trust-authority-main-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-trust-authority-layout">
-                        <div className="luxguide-trust-content">
+                    <motion.div 
+                        className="luxguide-trust-authority-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-trust-content" variants={fadeInLeft}>
                             <span className="luxguide-trust-badge">TRUST & AUTHORITY SECTION</span>
                             <h2 className="luxguide-h2">Why Travelers Work with Trips & Ships Luxury Travel</h2>
 
@@ -266,7 +315,7 @@ function LuxuryGuidedVacations() {
 
                             <div className="luxguide-values-wrap">
                                 <p className="luxguide-values-title">Our travelers value:</p>
-                                <div className="luxguide-values-grid-new">
+                                <motion.div className="luxguide-values-grid-new" variants={staggerContainer}>
                                     {[
                                         { label: 'Concierge level planning', icon: <Sparkles size={16} /> },
                                         { label: 'Strategic itinerary guidance', icon: <Navigation size={16} /> },
@@ -277,16 +326,16 @@ function LuxuryGuidedVacations() {
                                         { label: 'Long term travel partnership support', icon: <Heart size={16} /> },
                                         { label: 'Luxury cruise, safari, expedition, and Europe expertise', icon: <Crown size={16} /> }
                                     ].map((item, i) => (
-                                        <div key={i} className="luxguide-value-item-new animate-on-scroll" style={{ animationDelay: `${i * 0.1}s` }}>
+                                        <motion.div key={i} className="luxguide-value-item-new" variants={fadeInUp}>
                                             <div className="luxguide-value-icon">{item.icon}</div>
                                             <span>{item.label}</span>
-                                        </div>
+                                        </motion.div>
                                     ))}
-                                </div>
+                                </motion.div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-trust-visuals">
+                        <motion.div className="luxguide-trust-visuals" variants={fadeInRight}>
                             <div className="luxguide-video-placeholder">
                                 <div className="luxguide-video-overlay">
                                     <div className="luxguide-play-button">
@@ -305,22 +354,34 @@ function LuxuryGuidedVacations() {
                                     <div className="luxguide-placeholder-label">Image Placeholder: Luxury Detail</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── AUTHORITY PROOF STACK ────────────────────────────────────────────────── */}
             <section className="luxguide-authority-stack-proof-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-authority-header">
+                    <motion.div 
+                        className="luxguide-authority-header"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <span className="luxguide-authority-badge">AUTHORITY PROOF STACK</span>
                         <h2 className="luxguide-h2">Why This Page Has Authority</h2>
                         <p className="luxguide-authority-sub">Trips & Ships Luxury Travel: A legacy of global expertise and industry leadership.</p>
-                    </div>
+                    </motion.div>
 
                     <div className="luxguide-authority-layout">
-                        <div className="luxguide-authority-ledger">
+                        <motion.div 
+                            className="luxguide-authority-ledger"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.1 }}
+                            variants={fadeInLeft}
+                        >
                             {[
                                 { text: 'Over 40 years in the travel industry', icon: <Clock size={16} /> },
                                 { text: '121+ countries traveled', icon: <Globe size={16} /> },
@@ -337,7 +398,7 @@ function LuxuryGuidedVacations() {
                                 { text: 'Concierge level luxury planning', icon: <Sparkles size={16} /> },
                                 { text: 'Strong relationships across the global luxury travel industry', icon: <Heart size={16} /> }
                             ].map((item, i) => (
-                                <div key={i} className="luxguide-authority-item animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
+                                <div key={i} className="luxguide-authority-item">
                                     <div className="luxguide-authority-num">{(i + 1).toString().padStart(2, '0')}</div>
                                     <div className="luxguide-authority-text">
                                         <span className="luxguide-authority-icon">{item.icon}</span>
@@ -345,9 +406,9 @@ function LuxuryGuidedVacations() {
                                     </div>
                                 </div>
                             ))}
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-authority-visual">
+                        <motion.div className="luxguide-authority-visual" variants={fadeInRight} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                             <div className="luxguide-video-placeholder secondary">
                                 <div className="luxguide-video-overlay">
                                     <ShieldCheck size={48} strokeWidth={1} style={{ marginBottom: '20px', opacity: 0.6 }} />
@@ -375,7 +436,7 @@ function LuxuryGuidedVacations() {
                             <div className="luxguide-image-placeholder-full">
                                 <div className="luxguide-placeholder-label">Expertise Image Placeholder: Global Operations</div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>
@@ -383,8 +444,14 @@ function LuxuryGuidedVacations() {
             {/* ── MEET ANGELA HUGHES (SIGNATURE SPOTLIGHT) ───────────────────────────── */}
             <section className="luxguide-signature-spotlight-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-signature-layout">
-                        <div className="luxguide-signature-visual">
+                    <motion.div 
+                        className="luxguide-signature-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-signature-visual" variants={fadeInLeft}>
                             <div className="luxguide-signature-frame">
                                 <div className="luxguide-portrait-placeholder">
                                     <div className="luxguide-placeholder-inner">
@@ -402,9 +469,9 @@ function LuxuryGuidedVacations() {
                                 </div>
                                 <p>Defining Luxury Travel Excellence Since 1984</p>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-signature-content">
+                        <motion.div className="luxguide-signature-content" variants={fadeInRight}>
                             <span className="luxguide-signature-badge">MEET ANGELA HUGHES</span>
                             <h2 className="luxguide-h2">Meet Angela Hughes</h2>
 
@@ -435,16 +502,22 @@ function LuxuryGuidedVacations() {
                             <div className="luxguide-signature-footer">
                                 <p>Expertise and visibility that translates into meaningful travel for Ireland, Scotland, and Europe.</p>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── WHY IRELAND (ATMOSPHERIC IMMERSION) ───────────────────────────────── */}
             <section className="luxguide-ireland-immersion-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-immersion-layout">
-                        <div className="luxguide-immersion-visual">
+                    <motion.div 
+                        className="luxguide-immersion-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-immersion-visual" variants={fadeInLeft}>
                             <div className="luxguide-visual-stack">
                                 <div className="luxguide-main-visual-placeholder">
                                     <div className="luxguide-placeholder-overlay">
@@ -463,9 +536,9 @@ function LuxuryGuidedVacations() {
                                     <span>Deep Context</span>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-immersion-content">
+                        <motion.div className="luxguide-immersion-content" variants={fadeInRight}>
                             <span className="luxguide-immersion-tag">THE EMERALD ISLE</span>
                             <h2 className="luxguide-h2-white">Why Ireland Continues to Captivate Luxury Travelers</h2>
 
@@ -485,19 +558,19 @@ function LuxuryGuidedVacations() {
                                 </p>
                             </div>
 
-                            <div className="luxguide-moments-ledger">
+                            <motion.div className="luxguide-moments-ledger" variants={staggerContainer}>
                                 {[
                                     'A quiet morning in the countryside.',
                                     'A conversation inside a village pub.',
                                     'Traditional music late at night.',
                                     'A local guide telling stories that suddenly make Irish history feel personal instead of academic.'
                                 ].map((moment, i) => (
-                                    <div key={i} className="luxguide-moment-item animate-on-scroll" style={{ animationDelay: `${i * 0.15}s` }}>
+                                    <motion.div key={i} className="luxguide-moment-item" variants={fadeInUp}>
                                         <div className="luxguide-moment-dot"></div>
                                         <span>{moment}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
 
                             <div className="luxguide-immersion-footer">
                                 <div className="luxguide-footer-callout">
@@ -508,24 +581,36 @@ function LuxuryGuidedVacations() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── WHY CIE TOURS (SPECIALIZATION BLUEPRINT) ───────────────────────────── */}
             <section className="luxguide-cie-specialization-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-cie-header">
+                    <motion.div 
+                        className="luxguide-cie-header"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <span className="luxguide-badge-navy">FEATURED PARTNER</span>
                         <h2 className="luxguide-h2">Why CIE Tours Continues to Stand Out</h2>
                         <div className="luxguide-cie-intro-text">
                             <p className="luxguide-p">CIE Tours has spent decades building expertise throughout Ireland, Scotland, and Europe.</p>
                             <p className="luxguide-p">While many travel companies attempt to cover the entire world, CIE Tours built much of its reputation through deep destination specialization, particularly throughout Ireland and the British Isles.</p>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-cie-pillars-grid">
+                    <motion.div 
+                        className="luxguide-cie-pillars-grid"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
                         {[
                             { label: 'Simplicity', icon: <LayoutList size={18} /> },
                             { label: 'Comfort', icon: <Heart size={18} /> },
@@ -536,17 +621,23 @@ function LuxuryGuidedVacations() {
                             { label: 'Seamless logistics', icon: <Navigation size={18} /> },
                             { label: 'Emotional connection to the destination', icon: <Star size={18} /> }
                         ].map((item, i) => (
-                            <div key={i} className="luxguide-cie-pillar animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
+                            <motion.div key={i} className="luxguide-cie-pillar" variants={fadeInUp}>
                                 <div className="luxguide-pillar-icon-wrap">
                                     {item.icon}
                                 </div>
                                 <span>{item.label}</span>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-cie-comparison-box">
-                        <div className="luxguide-comparison-content">
+                    <motion.div 
+                        className="luxguide-cie-comparison-box"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-comparison-content" variants={fadeInLeft}>
                             <h3 className="luxguide-h3">The Freedom to Stay Present</h3>
                             <p className="luxguide-p">
                                 One of the reasons many affluent travelers continue choosing escorted touring in Ireland is because they want to experience the scenery instead of spending the entire trip focused on navigating narrow countryside roads, parking challenges, and driving fatigue.
@@ -558,35 +649,47 @@ function LuxuryGuidedVacations() {
                                 <Navigation size={20} />
                                 <span>Escorted touring allows travelers to stay present inside the experience itself.</span>
                             </div>
-                        </div>
-                        <div className="luxguide-comparison-visual">
+                        </motion.div>
+                        <motion.div className="luxguide-comparison-visual" variants={fadeInRight}>
                             <div className="luxguide-map-container">
-                                <img 
-                                    src="" 
-                                    alt="Ireland Itinerary Map Placeholder" 
-                                    className="luxguide-map-img" 
+                                <img
+                                    src=""
+                                    alt="Ireland Itinerary Map Placeholder"
+                                    className="luxguide-map-img"
                                 />
                                 <div className="luxguide-map-overlay">
                                     <p>Interactive Map Placeholder: The Grand Tour Route</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── THE EVOLUTION OF LUXURY GUIDED TRAVEL (MODERN SHIFT) ─────────────── */}
             <section className="luxguide-evolution-shift-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-evolution-header">
+                    <motion.div 
+                        className="luxguide-evolution-header"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <span className="luxguide-eyebrow-white">THE NEW LUXURY TRAVELER</span>
                         <h2 className="luxguide-h2-white">The Evolution of Luxury Guided Travel</h2>
                         <p className="luxguide-p-white">
                             Escorted touring has changed dramatically over the past decade. Today’s luxury traveler increasingly prioritizes:
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-evolution-matrix">
+                    <motion.div 
+                        className="luxguide-evolution-matrix"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
                         {[
                             'Ease',
                             'Access',
@@ -597,14 +700,20 @@ function LuxuryGuidedVacations() {
                             'Authenticity',
                             'Stress reduction'
                         ].map((item, i) => (
-                            <div key={i} className="luxguide-evolution-item animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
+                            <motion.div key={i} className="luxguide-evolution-item" variants={fadeInUp}>
                                 <div className="luxguide-evolution-dot"></div>
                                 <span>{item}</span>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-frictionless-box">
+                    <motion.div 
+                        className="luxguide-frictionless-box"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <div className="luxguide-frictionless-content">
                             <p className="luxguide-p-white">
                                 Many affluent travelers who once avoided guided tours are now rediscovering escorted travel because of how much easier and more immersive it can make complex destinations.
@@ -617,21 +726,32 @@ function LuxuryGuidedVacations() {
                             <h3 className="luxguide-h3-white">Luxury today is increasingly about removing friction.</h3>
                             <p className="luxguide-p-white">Not adding more complexity.</p>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── BEST DESTINATIONS ───────────────────────────────────────────────────── */}
             <section className="luxguide-destinations-options-section">
                 <div className="luxguide-inner">
-                    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-
+                    <motion.div 
+                        style={{ textAlign: 'center', marginBottom: '48px' }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>Best Destinations for CIE Tours</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-options-grid-premium">
-                        <div className="luxguide-option-card-new">
+                    <motion.div 
+                        className="luxguide-options-grid-premium"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
                             <img src={luxuryRefined} alt="Ireland" className="luxguide-option-bg" />
                             <div className="luxguide-option-overlay">
                                 <div className="luxguide-option-content-inner">
@@ -641,9 +761,9 @@ function LuxuryGuidedVacations() {
                                     <button className="luxguide-option-btn">Explore Ireland <ArrowRight size={14} /></button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-option-card-new">
+                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
                             <img src={cruiseView} alt="Scotland" className="luxguide-option-bg" />
                             <div className="luxguide-option-overlay">
                                 <div className="luxguide-option-content-inner">
@@ -653,9 +773,9 @@ function LuxuryGuidedVacations() {
                                     <button className="luxguide-option-btn">Explore Scotland <ArrowRight size={14} /></button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-option-card-new">
+                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
                             <img src={singaporeSkyline} alt="England & Wales" className="luxguide-option-bg" />
                             <div className="luxguide-option-overlay">
                                 <div className="luxguide-option-content-inner">
@@ -665,9 +785,9 @@ function LuxuryGuidedVacations() {
                                     <button className="luxguide-option-btn">Explore UK <ArrowRight size={14} /></button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="luxguide-option-card-new">
+                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
                             <img src={cruiseView} alt="Europe" className="luxguide-option-bg" />
                             <div className="luxguide-option-overlay">
                                 <div className="luxguide-option-content-inner">
@@ -677,22 +797,28 @@ function LuxuryGuidedVacations() {
                                     <button className="luxguide-option-btn">Explore Europe <ArrowRight size={14} /></button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── WHO SHOULD CONSIDER CIE TOURS (TRAVELER ALIGNMENT) ───────────────── */}
             <section className="luxguide-traveler-alignment-section">
                 <div className="luxguide-inner">
-                    <div className="luxguide-alignment-layout">
+                    <motion.div 
+                        className="luxguide-alignment-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
                         {/* Left Column: Values Ledger */}
-                        <div className="luxguide-alignment-values">
+                        <motion.div className="luxguide-alignment-values" variants={fadeInLeft}>
                             <span className="luxguide-badge-navy">THE STRATEGIC FIT</span>
                             <h2 className="luxguide-h2">Who Should Consider a CIE Tours Vacation</h2>
                             <p className="luxguide-p">CIE Tours works especially well for travelers who value:</p>
 
-                            <div className="luxguide-values-ledger">
+                            <motion.div className="luxguide-values-ledger" variants={staggerContainer}>
                                 {[
                                     'Well organized travel',
                                     'Cultural immersion',
@@ -704,21 +830,21 @@ function LuxuryGuidedVacations() {
                                     'Guided storytelling',
                                     'Seamless logistics'
                                 ].map((value, i) => (
-                                    <div key={i} className="luxguide-value-row animate-on-scroll" style={{ animationDelay: `${i * 0.05}s` }}>
+                                    <motion.div key={i} className="luxguide-value-row" variants={fadeInUp}>
                                         <div className="luxguide-value-dot"></div>
                                         <span>{value}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
 
                         {/* Right Column: Persona Mosaic */}
-                        <div className="luxguide-alignment-personas">
+                        <motion.div className="luxguide-alignment-personas" variants={fadeInRight}>
                             <div className="luxguide-persona-header">
                                 <h3 className="luxguide-h3">This style of travel is especially popular among:</h3>
                             </div>
 
-                            <div className="luxguide-persona-grid">
+                            <motion.div className="luxguide-persona-grid" variants={staggerContainer}>
                                 {[
                                     { icon: <Heart size={20} />, label: 'Couples' },
                                     { icon: <Briefcase size={20} />, label: 'Retirees' },
@@ -728,35 +854,46 @@ function LuxuryGuidedVacations() {
                                     { icon: <Sparkles size={20} />, label: 'First time Europe travelers' },
                                     { icon: <Navigation size={20} />, label: 'Travelers uncomfortable driving internationally' }
                                 ].map((persona, i) => (
-                                    <div key={i} className="luxguide-persona-card animate-on-scroll" style={{ animationDelay: `${0.4 + i * 0.05}s` }}>
+                                    <motion.div key={i} className="luxguide-persona-card" variants={fadeInUp}>
                                         <div className="luxguide-persona-icon-box">
                                             {persona.icon}
                                         </div>
                                         <span>{persona.label}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
 
                             <div className="luxguide-alignment-visual-placeholder">
                                 <div className="luxguide-placeholder-overlay">
                                     <p>Cinematic Visual Placeholder: Multi-Generational Group Experience</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── GUIDED VS INDEPENDENT COMPARISON TABLE ──────────────────────────────── */}
             <section className="luxguide-comparison-side-section">
                 <div className="luxguide-inner">
-                    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-
+                    <motion.div 
+                        style={{ textAlign: 'center', marginBottom: '48px' }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>CIE Tours vs Independent Travel in Ireland</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-table-wrap">
+                    <motion.div 
+                        className="luxguide-table-wrap"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
                         <table className="luxguide-comparison-table">
                             <thead>
                                 <tr>
@@ -779,30 +916,48 @@ function LuxuryGuidedVacations() {
                                 ))}
                             </tbody>
                         </table>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-table-note">
+                    <motion.div 
+                        className="luxguide-table-note"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeInUp}
+                    >
                         <p>For many travelers, the value of escorted touring is not simply convenience. It is mental freedom. Being able to look out the window and experience Ireland instead of focusing on directions often changes the entire emotional tone of the trip.</p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── WHY BOOKING THROUGH A TRAVEL ADVISOR MATTERS ───────────────────────── */}
             <section className="luxguide-advisor-value-matters-section">
                 <div className="luxguide-inner">
-                    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                    <motion.div 
+                        style={{ textAlign: 'center', marginBottom: '48px' }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
 
                         <h2 className="luxguide-h2" style={{ textAlign: 'center' }}>Why Booking Through a Luxury Travel Advisor Still Matters</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
                         <p className="luxguide-p" style={{ maxWidth: '700px', margin: '0 auto 16px', textAlign: 'center' }}>
                             One of the biggest misconceptions in travel today is that escorted touring has become fully transactional. It has not. A strong luxury travel advisor still adds enormous value.
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-advisor-layout">
-                        <div className="luxguide-advisor-value-list">
+                    <motion.div 
+                        className="luxguide-advisor-layout"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.div className="luxguide-advisor-value-list" variants={fadeInLeft}>
                             <p className="luxguide-h3">A Strong Advisor Adds Value Through:</p>
-                            <div className="luxguide-advisor-items">
+                            <motion.div className="luxguide-advisor-items" variants={staggerContainer}>
                                 {[
                                     'Supplier relationships',
                                     'Strategic itinerary guidance',
@@ -815,20 +970,20 @@ function LuxuryGuidedVacations() {
                                     'Experience design',
                                     'Long term planning',
                                 ].map((item, i) => (
-                                    <div key={i} className="luxguide-advisor-item">
+                                    <motion.div key={i} className="luxguide-advisor-item" variants={fadeInUp}>
                                         <ChevronRight size={16} />
                                         <span>{item}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
 
-                        <div className="luxguide-advisor-expand">
+                        <motion.div className="luxguide-advisor-expand" variants={fadeInRight}>
                             <div className="luxguide-expand-header">
                                 <Sparkles size={20} style={{ color: 'var(--lg-navy)' }} />
                                 <p className="luxguide-h3">We Frequently Help Travelers Expand Into:</p>
                             </div>
-                            <div className="luxguide-expand-grid">
+                            <motion.div className="luxguide-expand-grid" variants={staggerContainer}>
                                 {[
                                     { icon: <Star size={18} />, label: 'Luxury Hotels' },
                                     { icon: <Navigation size={18} />, label: 'River Cruises' },
@@ -839,14 +994,14 @@ function LuxuryGuidedVacations() {
                                     { icon: <Globe size={18} />, label: 'Luxury Rail Journeys' },
                                     { icon: <Gem size={18} />, label: 'Small Ship Cruises' },
                                 ].map((item, i) => (
-                                    <div key={i} className="luxguide-expand-item">
+                                    <motion.div key={i} className="luxguide-expand-item" variants={fadeInUp}>
                                         <div className="luxguide-expand-icon">{item.icon}</div>
                                         <span>{item.label}</span>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
-                        </div>
-                    </div>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -854,16 +1009,28 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-common-mistakes-planning-section">
                 <div className="luxguide-bg-pattern"></div>
                 <div className="luxguide-inner luxguide-relative">
-                    <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                    <motion.div 
+                        style={{ textAlign: 'center', marginBottom: '48px' }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={fadeInUp}
+                    >
 
                         <h2 className="luxguide-h2-white" style={{ textAlign: 'center' }}>Common Mistakes Travelers Make Planning Ireland</h2>
                         <div className="luxguide-bar-white luxguide-bar-center"></div>
                         <p className="luxguide-p-white" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
                             After years of helping clients travel throughout Ireland, some of the most common mistakes include:
                         </p>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-mistakes-grid">
+                    <motion.div 
+                        className="luxguide-mistakes-grid"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
                         {[
                             { num: '01', mistake: 'Attempting to cover too much territory too quickly' },
                             { num: '02', mistake: 'Underestimating driving fatigue' },
@@ -874,33 +1041,52 @@ function LuxuryGuidedVacations() {
                             { num: '07', mistake: 'Waiting too long to book premium experiences' },
                             { num: '08', mistake: 'Assuming all escorted tours are identical' },
                         ].map((item, i) => (
-                            <div key={i} className="luxguide-mistake-card">
+                            <motion.div key={i} className="luxguide-mistake-card" variants={fadeInUp}>
                                 <div className="luxguide-mistake-num">{item.num}</div>
                                 <p className="luxguide-mistake-text">{item.mistake}</p>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-mistakes-closing">
+                    <motion.div 
+                        className="luxguide-mistakes-closing"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeInUp}
+                    >
                         <p>Luxury travel is often less about doing more. And more about experiencing the right things well.</p>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── FAQ SECTION ──────────────────────────────────────────────────────────── */}
             <section className="luxguide-faq-authority-section">
                 <div className="luxguide-faq-inner-new">
-                    <div style={{ textAlign: 'center' }}>
+                    <motion.div 
+                        style={{ textAlign: 'center' }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeInUp}
+                    >
                         <h2 className="luxguide-h2-faq">Frequently Asked Questions About CIE Tours &amp; Ireland Vacations</h2>
                         <div className="luxguide-bar luxguide-bar-center"></div>
-                    </div>
+                    </motion.div>
 
-                    <div className="luxguide-faq-list-new">
+                    <motion.div 
+                        className="luxguide-faq-list-new"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={staggerContainer}
+                    >
                         {faqs.map((faq, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className="luxguide-faq-item-new"
                                 onClick={() => toggleFaq(index)}
+                                variants={fadeInUp}
                             >
                                 <div className="luxguide-faq-question-new">
                                     <span>{faq.question}</span>
@@ -911,9 +1097,9 @@ function LuxuryGuidedVacations() {
                                 {activeFaq === index && (
                                     <p className="luxguide-faq-answer-new">{faq.answer}</p>
                                 )}
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         </>
