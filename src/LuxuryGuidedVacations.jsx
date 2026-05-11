@@ -744,61 +744,66 @@ function LuxuryGuidedVacations() {
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </motion.div>
 
-                    <motion.div 
-                        className="luxguide-options-grid-premium"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.1 }}
-                        variants={staggerContainer}
-                    >
-                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
-                            <img src={luxuryRefined} alt="Ireland" className="luxguide-option-bg" />
-                            <div className="luxguide-option-overlay">
-                                <div className="luxguide-option-content-inner">
-                                    <div className="luxguide-option-badge-new primary">Most Popular</div>
-                                    <p className="luxguide-option-title-new">Ireland</p>
-                                    <p className="luxguide-option-desc-new">Popular Ireland experiences include: Dublin, Galway, Killarney, Ring of Kerry, Dingle Peninsula, Cliffs of Moher, Belfast, Giant’s Causeway, Irish castle stays, Whiskey experiences, Heritage travel, and Countryside touring.</p>
-                                    <button className="luxguide-option-btn">Explore Ireland <ArrowRight size={14} /></button>
+                    <div className="luxguide-options-scroll-wrapper">
+                        <motion.div 
+                            className="luxguide-options-scroll-content"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                        >
+                            {[...Array(2)].map((_, idx) => (
+                                <div key={idx} className="luxguide-options-track">
+                                    {[
+                                        {
+                                            img: luxuryRefined,
+                                            badge: "Most Popular",
+                                            badgeType: "primary",
+                                            title: "Ireland",
+                                            desc: "Popular Ireland experiences include: Dublin, Galway, Killarney, Ring of Kerry, Dingle Peninsula, Cliffs of Moher, Belfast, Giant’s Causeway, Irish castle stays, Whiskey experiences, Heritage travel, and Countryside touring."
+                                        },
+                                        {
+                                            img: cruiseView,
+                                            badge: "Growing Fast",
+                                            title: "Scotland",
+                                            desc: "Scotland continues seeing strong growth among luxury travelers interested in: Highlands journeys, Castles, Whisky regions, Scenic rail experiences, Edinburgh, Isle of Skye, Historic estates, and Countryside immersion."
+                                        },
+                                        {
+                                            img: singaporeSkyline,
+                                            badge: "New Trends",
+                                            title: "England & Wales",
+                                            desc: "Travelers increasingly combine: London, Bath, Cotswolds, Wales, Literary history, Countryside manors, and Cultural touring."
+                                        },
+                                        {
+                                            img: cruiseView,
+                                            badge: "Multi-Country",
+                                            title: "Europe",
+                                            desc: "CIE Tours also operates journeys throughout: Italy, Spain, Portugal, France, and Multi country Europe itineraries."
+                                        }
+                                    ].map((dest, i) => (
+                                        <motion.div 
+                                            key={i} 
+                                            className="luxguide-option-card-new"
+                                            initial={{ rotateY: 45, opacity: 0, scale: 0.9 }}
+                                            whileInView={{ rotateY: 0, opacity: 1, scale: 1 }}
+                                            viewport={{ once: false, amount: 0.1 }}
+                                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                            whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.3 } }}
+                                        >
+                                            <img src={dest.img} alt={dest.title} className="luxguide-option-bg" />
+                                            <div className="luxguide-option-overlay">
+                                                <div className="luxguide-option-content-inner">
+                                                    <div className={`luxguide-option-badge-new ${dest.badgeType || ''}`}>{dest.badge}</div>
+                                                    <p className="luxguide-option-title-new">{dest.title}</p>
+                                                    <p className="luxguide-option-desc-new">{dest.desc}</p>
+                                                    <button className="luxguide-option-btn">Explore {dest.title} <ArrowRight size={14} /></button>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
                                 </div>
-                            </div>
+                            ))}
                         </motion.div>
-
-                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
-                            <img src={cruiseView} alt="Scotland" className="luxguide-option-bg" />
-                            <div className="luxguide-option-overlay">
-                                <div className="luxguide-option-content-inner">
-                                    <div className="luxguide-option-badge-new">Growing Fast</div>
-                                    <p className="luxguide-option-title-new">Scotland</p>
-                                    <p className="luxguide-option-desc-new">Scotland continues seeing strong growth among luxury travelers interested in: Highlands journeys, Castles, Whisky regions, Scenic rail experiences, Edinburgh, Isle of Skye, Historic estates, and Countryside immersion.</p>
-                                    <button className="luxguide-option-btn">Explore Scotland <ArrowRight size={14} /></button>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
-                            <img src={singaporeSkyline} alt="England & Wales" className="luxguide-option-bg" />
-                            <div className="luxguide-option-overlay">
-                                <div className="luxguide-option-content-inner">
-                                    <div className="luxguide-option-badge-new">New Trends</div>
-                                    <p className="luxguide-option-title-new">England & Wales</p>
-                                    <p className="luxguide-option-desc-new">Travelers increasingly combine: London, Bath, Cotswolds, Wales, Literary history, Countryside manors, and Cultural touring.</p>
-                                    <button className="luxguide-option-btn">Explore UK <ArrowRight size={14} /></button>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div className="luxguide-option-card-new" variants={fadeInUp}>
-                            <img src={cruiseView} alt="Europe" className="luxguide-option-bg" />
-                            <div className="luxguide-option-overlay">
-                                <div className="luxguide-option-content-inner">
-                                    <div className="luxguide-option-badge-new">Multi-Country</div>
-                                    <p className="luxguide-option-title-new">Europe</p>
-                                    <p className="luxguide-option-desc-new">CIE Tours also operates journeys throughout: Italy, Spain, Portugal, France, and Multi country Europe itineraries.</p>
-                                    <button className="luxguide-option-btn">Explore Europe <ArrowRight size={14} /></button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
