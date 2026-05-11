@@ -32,28 +32,28 @@ const Navbar = () => (
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-        opacity: 1, 
-        y: 0, 
-        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
     }
 }
 
 const fadeInLeft = {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-        opacity: 1, 
-        x: 0, 
-        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
     }
 }
 
 const fadeInRight = {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-        opacity: 1, 
-        x: 0, 
-        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } 
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
     }
 }
 
@@ -199,33 +199,48 @@ function LuxuryGuidedVacations() {
 
             {/* ── HERO ──────────────────────────────────────────────────────────────────── */}
             <section className="luxguide-hero-section">
-                <div className="luxguide-hero-placeholder">
+                <motion.div
+                    className="luxguide-hero-placeholder"
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 8, ease: "easeOut" }}
+                >
                     <div className="luxguide-placeholder-overlay">
                         <p>Cinematic Hero Visual: Luxury Landscapes of Ireland & Scotland</p>
                     </div>
-                </div>
+                </motion.div>
                 <div className="luxguide-hero-overlay"></div>
 
                 <div className="luxguide-inner luxguide-hero-inner">
-                    <div className="luxguide-hero-text-content">
-                        <span className="luxguide-eyebrow-hero">
+                    <motion.div
+                        className="luxguide-hero-text-content"
+                        initial="hidden"
+                        animate="visible"
+                        variants={staggerContainer}
+                    >
+                        <motion.span className="luxguide-eyebrow-hero" variants={fadeInUp}>
                             <Globe size={14} strokeWidth={2} />
                             Trips &amp; Ships Luxury Travel
-                        </span>
+                        </motion.span>
 
-                        <h1 className="luxguide-h1">
+                        <motion.h1 className="luxguide-h1" variants={fadeInUp}>
                             Luxury Guided Vacations<br />
                             Through Ireland, Scotland &amp; Europe with CIE Tours
-                        </h1>
-                        <div className="luxguide-hero-bar"></div>
-                    </div>
+                        </motion.h1>
+                        <motion.div
+                            className="luxguide-hero-bar"
+                            initial={{ width: 0 }}
+                            animate={{ width: 120 }}
+                            transition={{ duration: 1.5, delay: 0.8, ease: "circOut" }}
+                        ></motion.div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* ── NARRATIVE LEDGER SECTION (ASYMMETRIC STORYTELLING) ───────────────── */}
             <section className="luxguide-narrative-ledger-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-narrative-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -233,18 +248,45 @@ function LuxuryGuidedVacations() {
                         variants={staggerContainer}
                     >
                         {/* Visual Side: Staggered Cinematic Panels */}
-                        <motion.div className="luxguide-narrative-visuals" variants={fadeInLeft}>
-                            <div className="luxguide-narrative-label"></div>
-                            <div className="luxguide-narrative-panel main">
+                        <motion.div
+                            className="luxguide-narrative-visuals"
+                            variants={fadeInLeft}
+                        >
+                            <div className="luxguide-narrative-label">EST. 1984</div>
+                            <motion.div
+                                className="luxguide-narrative-panel main"
+                                animate={{
+                                    y: [0, -15, 0],
+                                    rotate: [0, 1, 0]
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
                                 <div className="luxguide-placeholder-visual">
                                     <p>Cinematic: The Ancient Spirit of Ireland</p>
                                 </div>
-                            </div>
-                            <div className="luxguide-narrative-panel sub">
+                            </motion.div>
+                            <motion.div
+                                className="luxguide-narrative-panel sub"
+                                animate={{
+                                    y: [0, 15, 0],
+                                    rotate: [0, -1, 0]
+                                }}
+                                transition={{
+                                    duration: 7,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 1
+                                }}
+                            >
                                 <div className="luxguide-placeholder-visual">
                                     <p>Cinematic: Highland Majesty</p>
                                 </div>
-                            </div>
+                            </motion.div>
+                            <div className="luxguide-narrative-ghost-text">LEGACY</div>
                         </motion.div>
 
                         <motion.div className="luxguide-narrative-content" variants={fadeInRight}>
@@ -253,7 +295,12 @@ function LuxuryGuidedVacations() {
                                 Some destinations deserve<br />
                                 <span>more than a reservation.</span>
                             </h2>
-                            <div className="luxguide-narrative-bar"></div>
+                            <motion.div
+                                className="luxguide-narrative-bar"
+                                initial={{ width: 0 }}
+                                whileInView={{ width: 120 }}
+                                transition={{ duration: 1.2, ease: "easeOut" }}
+                            ></motion.div>
 
                             <div className="luxguide-narrative-text-blocks">
                                 <p className="luxguide-p-lead">
@@ -261,11 +308,21 @@ function LuxuryGuidedVacations() {
                                 </p>
 
                                 <div className="luxguide-destination-row">
-                                    <div className="luxguide-row-line"></div>
+                                    <motion.div
+                                        className="luxguide-row-line"
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: 40 }}
+                                        transition={{ duration: 1, delay: 0.5 }}
+                                    ></motion.div>
                                     <p className="luxguide-p">Ireland is one of those destinations.</p>
                                 </div>
                                 <div className="luxguide-destination-row">
-                                    <div className="luxguide-row-line"></div>
+                                    <motion.div
+                                        className="luxguide-row-line"
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: 40 }}
+                                        transition={{ duration: 1, delay: 0.7 }}
+                                    ></motion.div>
                                     <p className="luxguide-p">Scotland is one of those destinations.</p>
                                 </div>
 
@@ -289,7 +346,7 @@ function LuxuryGuidedVacations() {
             {/* ── TRUST & AUTHORITY SECTION ────────────────────────────────────────────── */}
             <section className="luxguide-trust-authority-main-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-trust-authority-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -362,7 +419,7 @@ function LuxuryGuidedVacations() {
             {/* ── AUTHORITY PROOF STACK ────────────────────────────────────────────────── */}
             <section className="luxguide-authority-stack-proof-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-authority-header"
                         initial="hidden"
                         whileInView="visible"
@@ -375,7 +432,7 @@ function LuxuryGuidedVacations() {
                     </motion.div>
 
                     <div className="luxguide-authority-layout">
-                        <motion.div 
+                        <motion.div
                             className="luxguide-authority-ledger"
                             initial="hidden"
                             whileInView="visible"
@@ -444,7 +501,7 @@ function LuxuryGuidedVacations() {
             {/* ── MEET ANGELA HUGHES (SIGNATURE SPOTLIGHT) ───────────────────────────── */}
             <section className="luxguide-signature-spotlight-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-signature-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -510,7 +567,7 @@ function LuxuryGuidedVacations() {
             {/* ── WHY IRELAND (ATMOSPHERIC IMMERSION) ───────────────────────────────── */}
             <section className="luxguide-ireland-immersion-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-immersion-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -589,7 +646,7 @@ function LuxuryGuidedVacations() {
             {/* ── WHY CIE TOURS (SPECIALIZATION BLUEPRINT) ───────────────────────────── */}
             <section className="luxguide-cie-specialization-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-cie-header"
                         initial="hidden"
                         whileInView="visible"
@@ -604,7 +661,7 @@ function LuxuryGuidedVacations() {
                         </div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-cie-pillars-grid"
                         initial="hidden"
                         whileInView="visible"
@@ -630,7 +687,7 @@ function LuxuryGuidedVacations() {
                         ))}
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-cie-comparison-box"
                         initial="hidden"
                         whileInView="visible"
@@ -669,7 +726,7 @@ function LuxuryGuidedVacations() {
             {/* ── THE EVOLUTION OF LUXURY GUIDED TRAVEL (MODERN SHIFT) ─────────────── */}
             <section className="luxguide-evolution-shift-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-evolution-header"
                         initial="hidden"
                         whileInView="visible"
@@ -683,7 +740,7 @@ function LuxuryGuidedVacations() {
                         </p>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-evolution-matrix"
                         initial="hidden"
                         whileInView="visible"
@@ -707,7 +764,7 @@ function LuxuryGuidedVacations() {
                         ))}
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-frictionless-box"
                         initial="hidden"
                         whileInView="visible"
@@ -733,7 +790,7 @@ function LuxuryGuidedVacations() {
             {/* ── BEST DESTINATIONS ───────────────────────────────────────────────────── */}
             <section className="luxguide-destinations-options-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         style={{ textAlign: 'center', marginBottom: '48px' }}
                         initial="hidden"
                         whileInView="visible"
@@ -745,7 +802,7 @@ function LuxuryGuidedVacations() {
                     </motion.div>
 
                     <div className="luxguide-options-scroll-wrapper">
-                        <motion.div 
+                        <motion.div
                             className="luxguide-options-scroll-content"
                             initial="hidden"
                             whileInView="visible"
@@ -780,8 +837,8 @@ function LuxuryGuidedVacations() {
                                             desc: "CIE Tours also operates journeys throughout: Italy, Spain, Portugal, France, and Multi country Europe itineraries."
                                         }
                                     ].map((dest, i) => (
-                                        <motion.div 
-                                            key={i} 
+                                        <motion.div
+                                            key={i}
                                             className="luxguide-option-card-new"
                                             initial={{ rotateY: 45, opacity: 0, scale: 0.9 }}
                                             whileInView={{ rotateY: 0, opacity: 1, scale: 1 }}
@@ -810,7 +867,7 @@ function LuxuryGuidedVacations() {
             {/* ── WHO SHOULD CONSIDER CIE TOURS (TRAVELER ALIGNMENT) ───────────────── */}
             <section className="luxguide-traveler-alignment-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         className="luxguide-alignment-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -881,7 +938,7 @@ function LuxuryGuidedVacations() {
             {/* ── GUIDED VS INDEPENDENT COMPARISON TABLE ──────────────────────────────── */}
             <section className="luxguide-comparison-side-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         style={{ textAlign: 'center', marginBottom: '48px' }}
                         initial="hidden"
                         whileInView="visible"
@@ -892,7 +949,7 @@ function LuxuryGuidedVacations() {
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-table-wrap"
                         initial="hidden"
                         whileInView="visible"
@@ -923,7 +980,7 @@ function LuxuryGuidedVacations() {
                         </table>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-table-note"
                         initial="hidden"
                         whileInView="visible"
@@ -938,7 +995,7 @@ function LuxuryGuidedVacations() {
             {/* ── WHY BOOKING THROUGH A TRAVEL ADVISOR MATTERS ───────────────────────── */}
             <section className="luxguide-advisor-value-matters-section">
                 <div className="luxguide-inner">
-                    <motion.div 
+                    <motion.div
                         style={{ textAlign: 'center', marginBottom: '48px' }}
                         initial="hidden"
                         whileInView="visible"
@@ -953,7 +1010,7 @@ function LuxuryGuidedVacations() {
                         </p>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-advisor-layout"
                         initial="hidden"
                         whileInView="visible"
@@ -1014,7 +1071,7 @@ function LuxuryGuidedVacations() {
             <section className="luxguide-common-mistakes-planning-section">
                 <div className="luxguide-bg-pattern"></div>
                 <div className="luxguide-inner luxguide-relative">
-                    <motion.div 
+                    <motion.div
                         style={{ textAlign: 'center', marginBottom: '48px' }}
                         initial="hidden"
                         whileInView="visible"
@@ -1029,7 +1086,7 @@ function LuxuryGuidedVacations() {
                         </p>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-mistakes-grid"
                         initial="hidden"
                         whileInView="visible"
@@ -1053,7 +1110,7 @@ function LuxuryGuidedVacations() {
                         ))}
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-mistakes-closing"
                         initial="hidden"
                         whileInView="visible"
@@ -1068,7 +1125,7 @@ function LuxuryGuidedVacations() {
             {/* ── FAQ SECTION ──────────────────────────────────────────────────────────── */}
             <section className="luxguide-faq-authority-section">
                 <div className="luxguide-faq-inner-new">
-                    <motion.div 
+                    <motion.div
                         style={{ textAlign: 'center' }}
                         initial="hidden"
                         whileInView="visible"
@@ -1079,7 +1136,7 @@ function LuxuryGuidedVacations() {
                         <div className="luxguide-bar luxguide-bar-center"></div>
                     </motion.div>
 
-                    <motion.div 
+                    <motion.div
                         className="luxguide-faq-list-new"
                         initial="hidden"
                         whileInView="visible"

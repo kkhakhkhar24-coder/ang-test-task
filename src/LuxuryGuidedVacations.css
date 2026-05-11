@@ -522,8 +522,9 @@ p,
    ============================================================ */
 .luxguide-narrative-ledger-section {
   padding: 60px 20px;
-  background: var(--lg-bg-white);
+  background: radial-gradient(circle at 0% 0%, var(--lg-bg-soft) 0%, var(--lg-bg-white) 100%);
   overflow: hidden;
+  position: relative;
 }
 
 .luxguide-narrative-layout {
@@ -554,6 +555,12 @@ p,
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(15, 28, 46, 0.15);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.luxguide-narrative-panel:hover {
+  box-shadow: 0 60px 120px rgba(15, 28, 46, 0.25);
+  z-index: 10;
 }
 
 .luxguide-narrative-panel.main {
@@ -595,16 +602,17 @@ p,
 
 .luxguide-narrative-ghost-text {
   position: absolute;
-  bottom: 100px;
-  left: -100px;
-  font-size: 120px;
+  top: 50%;
+  left: -150px;
+  font-size: 160px;
   font-weight: 900;
   color: var(--lg-navy);
-  opacity: 0.03;
-  letter-spacing: 0.2em;
-  transform: rotate(-90deg);
+  opacity: 0.02;
+  letter-spacing: 0.3em;
+  transform: translateY(-50%) rotate(-90deg);
   z-index: 1;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .luxguide-h2-narrative {
@@ -1782,6 +1790,7 @@ p,
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
